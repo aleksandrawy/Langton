@@ -68,17 +68,17 @@ class Window {
             add(StepLabel); 
             
         //Przyciski
-            Start.setBounds(70, 10, 100, 40);
-            Stop.setBounds(70, 60, 100, 40);
+            Start.setBounds(10, 10, 100, 40);
+            Stop.setBounds(10, 60, 100, 40);
         //Licznik kroków
-            StepLabel.setBounds(100, 100, 50, 30);                     
-            Counter.setBounds(70, 130, 100, 30);
+            StepLabel.setBounds(40, 100, 50, 30);                     
+            Counter.setBounds(10, 130, 100, 30);
         //Dodawanie mrówki    
-            AddAnt.setBounds(70, 170, 100, 40);
+            AddAnt.setBounds(10, 170, 100, 40);
             
         //przeskok o liczbę kroków
-            AddSteps.setBounds(70, 220, 100, 30);           
-            GoTo.setBounds(70, 260, 100, 40);
+            AddSteps.setBounds(10, 220, 100, 30);           
+            GoTo.setBounds(10, 260, 100, 40);
             
         }
     }
@@ -90,7 +90,7 @@ class Window {
             
             GridBagConstraints grid = new GridBagConstraints();
             for (int row = 0; row < 60; row++) {
-                for (int column = 0; column < 100; column++) {
+                for (int column = 0; column < 110; column++) {
                     grid.gridx = column;
                     grid.gridy = row;
 
@@ -98,20 +98,19 @@ class Window {
                     
                     MatteBorder border = null;
                     if (row < 59) {
-                        if (column < 99) {
+                        if (column < 109) {
                             border = new MatteBorder(1, 1, 0, 0, Color.BLACK);
                         } else {
                             border = new MatteBorder(1, 1, 0, 1, Color.BLACK);
                         }
                     } else {
-                        if (column < 99) {
+                        if (column < 109) {
                             border = new MatteBorder(1, 1, 1, 0, Color.BLACK);
                         } else {
                             border = new MatteBorder(1, 1, 1, 1, Color.BLACK);
                         }
                     }
                     cellPane.setBorder(border);
-                    cellPane.setBounds(200, 10, 1700, 1000);
                     add(cellPane, grid);
                 }
             }
