@@ -6,10 +6,13 @@
 package langtonant;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -24,12 +27,33 @@ public class LangtonAnt {
     public static void main(String[] args) {
         new Window();
     }
+    
+    private Timer zegar;
+    public boolean StartRys = false;
+    
+    class Dzialanie extends TimerTask{
+        public void run(){
+            if(StartRys){
+                
+            }else{
+                //nic nie robie
+            }
+        }
+    }
+    
+    public class Ant{
+        private final int wsp[] = new int[2];
+        
+        
+    }
 }
 
-<<<<<<< Upstream, based on origin/master
-class Window {
-
-            
+class Window extends LangtonAnt{
+   // private JButton przyciski[];
+    
+    JButton Start = new JButton("START"); // zamiat tego bedzie trzba zrobić tablice wszystkich przycisków 
+                                           // by w tej klasie nie było śmieci
+    
         Window(){
 
             JFrame frame = new JFrame("Langton Ant");
@@ -50,7 +74,7 @@ class Window {
 
     public class Buttons extends JPanel{
 
-            JButton Start = new JButton("START");
+
             JButton Stop = new JButton("STOP");
             JButton AddAnt = new JButton("ADD ANT");
             JButton GoTo = new JButton("DO STEPS");
@@ -58,7 +82,10 @@ class Window {
             JTextField AddSteps = new JTextField(10);
             JLabel StepLabel = new JLabel("STEPS: ");
             
-        public Buttons(){
+        public void Buttons(){
+            Start.addActionListener(new ObslugaPrzycisku(this));
+            // TO MI NIE DZIAŁA !!
+            
             setLayout(null);
             add(Start);
             add(Stop);
@@ -80,6 +107,23 @@ class Window {
         //przeskok o liczbę kroków
             AddSteps.setBounds(10, 220, 100, 30);           
             GoTo.setBounds(10, 260, 100, 40);
+            
+        }
+    }
+    
+    private class ObslugaPrzycisku implements ActionListener{
+        private JFrame ref_okno;
+        
+        ObslugaPrzycisku(JFrame okno){
+            ref_okno = okno;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton bt = (JButton)e.getSource();
+            if(bt == Start){
+                StartRys = true;
+            }
             
         }
     }
@@ -114,25 +158,6 @@ class Window {
                     cellPane.setBorder(border);
                     add(cellPane, grid);
                 }
-=======
-    }    
-    ActionListener actionListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e){
-            long aSteps;
-            long aStepsToJump;
-            
-            if(e.getSource() == Start){
-                //
-            }else if(e.getSource() == Stop){
-                //
-            }else if(e.getSource() == AddingAnt){
-                //
-            }else if(e.getSource() == GoTo){ //Przeskok o ilość kroków - do wyrysowania na raz jakiejś liczby kroków
-                aSteps = Long.parseLong(Counter.getText());    
-                aStepsToJump = Long.parseLong(AddingSteps.getText());
-                Counter.setText(String.valueOf(aSteps += aStepsToJump));
->>>>>>> 07d3c85 Update 19.05 - przeskok
             }
         }
     }
@@ -165,8 +190,3 @@ class Window {
         }
     }
 }
-
-
-
-
-
