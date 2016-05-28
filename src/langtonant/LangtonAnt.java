@@ -119,12 +119,33 @@ class Window {
 
     public class CellPane extends JPanel {
 
-
+        private Color cellColor;
+        
         public CellPane() {
-            setBackground(Color.WHITE);
+                setBackground(Color.WHITE);
+                
+                addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    cellColor = getBackground();
+                    if(cellColor == Color.WHITE )setBackground(Color.BLACK);
+                    if(cellColor == Color.BLACK )setBackground(Color.WHITE);
+                }
+
+                public void mouseExited(MouseEvent e) {
+                    setBackground(cellColor);
+                }
+                
+                public void mouseClicked(MouseEvent e) {
+                    cellColor = getBackground();
+                    if(cellColor == Color.WHITE )setBackground(Color.BLACK);
+                    if(cellColor == Color.BLACK )setBackground(Color.WHITE);
+                }
+            });
         }
     }
 }
+
 
 
 
