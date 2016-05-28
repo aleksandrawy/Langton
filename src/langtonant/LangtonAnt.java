@@ -26,6 +26,7 @@ public class LangtonAnt {
     }
 }
 
+<<<<<<< Upstream, based on origin/master
 class Window {
 
             
@@ -113,6 +114,25 @@ class Window {
                     cellPane.setBorder(border);
                     add(cellPane, grid);
                 }
+=======
+    }    
+    ActionListener actionListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e){
+            long aSteps;
+            long aStepsToJump;
+            
+            if(e.getSource() == Start){
+                //
+            }else if(e.getSource() == Stop){
+                //
+            }else if(e.getSource() == AddingAnt){
+                //
+            }else if(e.getSource() == GoTo){ //Przeskok o ilość kroków - do wyrysowania na raz jakiejś liczby kroków
+                aSteps = Long.parseLong(Counter.getText());    
+                aStepsToJump = Long.parseLong(AddingSteps.getText());
+                Counter.setText(String.valueOf(aSteps += aStepsToJump));
+>>>>>>> 07d3c85 Update 19.05 - przeskok
             }
         }
     }
