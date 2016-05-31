@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
-import java.util.Timer;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -27,6 +26,25 @@ public class LangtonAnt {
 
     public static void main(String[] args) {
         new Window();
+    }
+    
+    private Timer zegar;
+    public boolean StartRys = false;
+    
+    class Dzialanie extends TimerTask{
+        public void run(){
+            if(StartRys){
+                
+            }else{
+                //nic nie robie
+            }
+        }
+    }
+    
+    public class Ant{
+        private final int wsp[] = new int[2];
+        
+        
     }
 }
 
@@ -53,7 +71,7 @@ class Window {
 
     public class Buttons extends JPanel{
 
-            JButton Start = new JButton("START");
+
             JButton Stop = new JButton("STOP");
             JButton AddAnt = new JButton("ADD ANT");
             JButton GoTo = new JButton("DO STEPS");
@@ -61,7 +79,10 @@ class Window {
             JTextField AddSteps = new JTextField(10);
             JLabel StepLabel = new JLabel("STEPS: ");
             
-        public Buttons(){
+        public void Buttons(){
+            Start.addActionListener(new ObslugaPrzycisku(this));
+            // TO MI NIE DZIAŁA !!
+            
             setLayout(null);
             add(Start);
             add(Stop);
@@ -83,6 +104,23 @@ class Window {
         //przeskok o liczbę kroków
             AddSteps.setBounds(10, 220, 100, 30);           
             GoTo.setBounds(10, 260, 100, 40);
+            
+        }
+    }
+    
+    private class ObslugaPrzycisku implements ActionListener{
+        private JFrame ref_okno;
+        
+        ObslugaPrzycisku(JFrame okno){
+            ref_okno = okno;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton bt = (JButton)e.getSource();
+            if(bt == Start){
+                StartRys = true;
+            }
             
         }
         
@@ -170,9 +208,3 @@ class Window {
        }
     }
 }
-
-
-
-
-
-
