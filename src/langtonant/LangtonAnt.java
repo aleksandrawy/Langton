@@ -6,10 +6,14 @@
 package langtonant;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
+import java.util.Timer;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -27,10 +31,10 @@ public class LangtonAnt {
 }
 
 class Window {
-
+            
             
         Window(){
-
+            
             JFrame frame = new JFrame("Langton Ant");
             
             Toolkit kit = Toolkit.getDefaultToolkit();
@@ -45,7 +49,7 @@ class Window {
             frame.add(new Buttons());
 
             frame.setVisible(true);
-            }
+        }
 
     public class Buttons extends JPanel{
 
@@ -81,11 +85,23 @@ class Window {
             GoTo.setBounds(10, 260, 100, 40);
             
         }
+        
+        public void actionPerformed(ActionEvent e){
+              CellPane ant;
+              ant = new CellPane();
+              Timer timer = new Timer();
+              
+              if(e.getSource() == Start);             
+              //    timer.schedule(ant, 0 ,20);
+        }
     }
+    
+
     
     public class Panel extends JPanel {
 
         public Panel() {
+            
             setLayout(new GridBagLayout());
             
             GridBagConstraints grid = new GridBagConstraints();
@@ -118,7 +134,7 @@ class Window {
     }
 
     public class CellPane extends JPanel {
-
+        
         private Color cellColor;
         
         public CellPane() {
@@ -143,8 +159,18 @@ class Window {
                 }
             });
         }
+
+    class Ant extends TimerTask{
+
+        public void run(){
+            setBackground(Color.RED);
+            
+        }
+    
+       }
     }
 }
+
 
 
 
